@@ -10,4 +10,6 @@ public interface ContentCategoryItemService {
     public List<TreeNode> getContentCategoryItemList(long parentId);
     
     public TaotaoResult insertContentCategory(long parentId, String name);
+
+	public TaotaoResult deleteContentCategory(long parentId, long nodeId) throws Exception;
 }

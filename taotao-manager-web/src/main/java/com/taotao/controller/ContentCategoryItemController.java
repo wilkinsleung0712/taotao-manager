@@ -32,4 +32,10 @@ public class ContentCategoryItemController {
         //返回taotaoresult
         return  contentCategoryItemService.insertContentCategory(parentId, name);
     }
+    
+    @RequestMapping
+    public TaotaoResult deleteContentCategoryItem(long parentId,long nodeId) throws Exception{
+    	//返回taotaoresult
+    	return  contentCategoryItemService.deleteContentCategory(parentId, nodeId);
+    }
 }
