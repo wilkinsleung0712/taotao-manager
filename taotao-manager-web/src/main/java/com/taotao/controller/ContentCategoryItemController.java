@@ -25,17 +25,27 @@ public class ContentCategoryItemController {
             @RequestParam(value = "id", defaultValue = "0") long parentId) {
         return contentCategoryItemService.getContentCategoryItemList(parentId);
     }
-    
+
     @RequestMapping("/create")
     @ResponseBody
-    public TaotaoResult createContentCategoryItem(long parentId,String name){
-        //返回taotaoresult
-        return  contentCategoryItemService.insertContentCategory(parentId, name);
+    public TaotaoResult createContentCategoryItem(long parentId, String name) {
+        // 返回taotaoresult
+        return contentCategoryItemService.insertContentCategory(parentId, name);
     }
-    
-    @RequestMapping
-    public TaotaoResult deleteContentCategoryItem(long parentId,long nodeId) throws Exception{
-    	//返回taotaoresult
-    	return  contentCategoryItemService.deleteContentCategory(parentId, nodeId);
+
+    @RequestMapping("/delete/")
+    @ResponseBody
+    public TaotaoResult deleteContentCategoryItem(long parentId, long id)
+            throws Exception {
+        // 返回taotaoresult
+        return contentCategoryItemService.deleteContentCategory(parentId, id);
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public TaotaoResult updateContentCategoryItem(long id, String name)
+            throws Exception {
+        // 返回taotaoresult
+        return contentCategoryItemService.updateContentCategory(name, id);
     }
 }

@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div>
-	 <ul id="contentCategory" class="easyui-tree">
-    </ul>
+	<ul id="contentCategory" class="easyui-tree">
+	</ul>
 </div>
-<div id="contentCategoryMenu" class="easyui-menu" style="width:120px;" data-options="onClick:menuHandler">
-    <div data-options="iconCls:'icon-add',name:'add'">添加</div>
-    <div data-options="iconCls:'icon-remove',name:'rename'">重命名</div>
-    <div class="menu-sep"></div>
-    <div data-options="iconCls:'icon-remove',name:'delete'">删除</div>
+<div id="contentCategoryMenu" class="easyui-menu" style="width: 120px;"
+	data-options="onClick:menuHandler">
+	<div data-options="iconCls:'icon-add',name:'add'">添加</div>
+	<div data-options="iconCls:'icon-remove',name:'rename'">重命名</div>
+	<div class="menu-sep"></div>
+	<div data-options="iconCls:'icon-remove',name:'delete'">删除</div>
 </div>
 <script type="text/javascript">
 $(function(){
@@ -60,11 +62,13 @@ function menuHandler(item){
 		tree.tree("select",_node.target).tree('beginEdit',_node.target);
 	}else if(item.name === "rename"){
 		tree.tree('beginEdit',node.target);
+		$.messager.alert('提示','更改'+node.text+' 名称成功!');
 	}else if(item.name === "delete"){
 		$.messager.confirm('确认','确定删除名为 '+node.text+' 的分类吗？',function(r){
 			if(r){
 				$.post("/content/category/delete/",{parentId:node.parentId,id:node.id},function(){
 					tree.tree("remove",node.target);
+					$.messager.alert('提示','删除'+node.text+' 分类成功!');
 				});	
 			}
 		});
