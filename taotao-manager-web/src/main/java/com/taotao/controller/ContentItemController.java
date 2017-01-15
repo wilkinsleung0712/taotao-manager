@@ -21,8 +21,8 @@ public class ContentItemController {
 	@RequestMapping("/query/list")
 	@ResponseBody 
 	public EUDataGridResult getContentList(@RequestParam(defaultValue = "0") long categoryId,
-			@RequestParam(defaultValue = "1") int pageSize, @RequestParam(defaultValue = "30") int row) {
-		return contentService.getContentItemList(categoryId, pageSize, row);
+			@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "30") int rows) {
+		return contentService.getContentItemList(categoryId, page, rows);
 	}
 
 	@RequestMapping("/save")
@@ -34,7 +34,9 @@ public class ContentItemController {
 
 	@RequestMapping("/delete")
 	@ResponseBody 
-	public TaotaoResult deleteContent(@RequestBody long ids) throws Exception {
+	public TaotaoResult deleteContent(@RequestParam long ids) throws Exception {
 		return contentService.deleteContentItem(ids);
 	}
+	
+	
 }
