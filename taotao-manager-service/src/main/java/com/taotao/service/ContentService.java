@@ -27,4 +27,9 @@ public interface ContentService {
 	 */
 	public TaotaoResult deleteContentItem(long contentId) throws Exception;
 
+	/**
+	 * @param content
+	 */
+	public TaotaoResult editContentItem(TbContent content);
+
 }
