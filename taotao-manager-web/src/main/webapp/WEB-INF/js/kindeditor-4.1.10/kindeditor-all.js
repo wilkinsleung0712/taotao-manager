@@ -3992,7 +3992,7 @@ _extend(KMenu, KWidget, {
 	},
 	addItem : function(item) {
 		var self = this;
-		if (item.item_title === '-') {
+		if (item.title === '-') {
 			self.div.append(K('<div class="ke-menu-separator"></div>'));
 			return;
 		}
@@ -4040,7 +4040,7 @@ _extend(KMenu, KWidget, {
 		if (iconClass !== '') {
 			leftDiv.html('<span class="ke-inline-block ke-toolbar-icon ke-toolbar-icon-url ' + iconClass + '"></span>');
 		}
-		rightDiv.html(item.item_title);
+		rightDiv.html(item.title);
 		return self;
 	},
 	remove : function() {
@@ -4573,7 +4573,7 @@ function _bindContextmenuEvent() {
 		}
 		var prevItem = null;
 		_each(items, function(i) {
-			if (this.title == '-' && previtem.item_title == '-') {
+			if (this.title == '-' && previtem.title == '-') {
 				delete items[i];
 			}
 			prevItem = this;
